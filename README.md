@@ -32,14 +32,11 @@ pip install -e .
 streamlit run main.py
 ```
 
-Access at `http://localhost:8501`.
-
 ### Docker Setup
 ```bash
 docker-compose up --build
 ```
 
-Access at `http://localhost:8501`.
 
 ## Usage
 1. Upload two CSV or Excel files via the web interface.
@@ -50,14 +47,6 @@ Access at `http://localhost:8501`.
 
 See `docs/user_guide.md` for detailed instructions.
 
-## Testing
-Run unit tests to verify merge functionality:
-```bash
-./scripts/run_tests.sh
-```
-
-Expected: 6 tests pass, covering exact, fuzzy, and cross merges.
-
 ## Deployment
 
 ### Local/Development
@@ -65,14 +54,8 @@ Run locally with `streamlit run main.py`.
 
 ### Streamlit Community Cloud (Demo)
 - Deployed at [Private Link, insert after deployment].
-- Access: Contact [Your Name] for private sharing.
 - Note: Prototype only; internal deployment recommended for production.
 
-### Production
-- **Recommended**: Internal server or cloud (e.g., AWS EC2, Azure App Service).
-- **Security**: Integrate SSO (e.g., Azure AD), HTTPS, VPN access.
-- **Scale**: Supports 10-20 initial users, scalable.
-- See `docs/security_plan.md` for details.
 
 ## Documentation
 - `docs/user_guide.md`: End-user instructions.
@@ -80,12 +63,11 @@ Run locally with `streamlit run main.py`.
 
 ## Contributing
 - Fork the repository and submit pull requests for enhancements.
-- Report issues or suggestions to [Your Email].
-- Coordinate with IT for production deployment changes.
+- Report issues or suggestions within GitHub Issues.
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## Contact
-- **Maintainer**: [Your Name] ([Your Email])
-- **Support**: Contact [Your Email] or submit issues on GitHub.
+- **Maintainer**: Brandon Yach)
+- **Support**: Submit issues on GitHub.
