@@ -1,0 +1,2 @@
+[runner]
+installCommands = ["pip install -e ."]

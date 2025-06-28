@@ -46,3 +46,7 @@ data/*
 dist/
 build/
 *.egg-info/
+
+# Streamlit
+.streamlit/*
+!.streamlit/config.toml
