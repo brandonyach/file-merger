@@ -1,6 +1,6 @@
 # File Merger Tool
 
-The File Merger Tool is a Python/Streamlit web application designed to streamline data merging for non-technical users. It enables merging of CSV or Excel files using exact, fuzzy, or cross (Cartesian product) joins on multiple columns, replacing manual Excel workflows with an intuitive interface. Ideal for tasks like reconciling inventory, customer records, or project assignments, the tool offers previews, customizable outputs, and robust security features.
+The File Merger Tool is a Python/Streamlit web application designed to streamline data merging for non-technical users. It enables merging of CSV or Excel files using exact, fuzzy, or cross (Cartesian product) joins on multiple columns, replacing manual Excel or spreadsheet workflows with an intuitive interface. 
 
 ## Features
 - **Flexible Merging**: Supports exact (left, inner, outer, right, anti), fuzzy (fuzzy, fuzzy anti), and cross merges.
@@ -12,7 +12,6 @@ The File Merger Tool is a Python/Streamlit web application designed to streamlin
   - Select merge type first, with clear descriptions for each type.
   - Choose File 2 columns to drop for customized output.
 - **Security**: No persistent data storage, ready for SSO and HTTPS integration.
-- **Testing**: 6 passing unit tests ensure reliability.
 
 ## Installation
 
@@ -32,12 +31,6 @@ pip install -e .
 streamlit run main.py
 ```
 
-### Docker Setup
-```bash
-docker-compose up --build
-```
-
-
 ## Usage
 1. Upload two CSV or Excel files via the web interface.
 2. Select a merge type (e.g., left, fuzzy, cross) from the left column.
@@ -52,7 +45,7 @@ See `docs/user_guide.md` for detailed instructions.
 ### Local/Development
 Run locally with `streamlit run main.py`.
 
-### Streamlit Community Cloud (Demo)
+### Streamlit Community Cloud 
 - Deployed at [Private Link, insert after deployment].
 - Note: Prototype only; internal deployment recommended for production.
 
@@ -69,5 +62,5 @@ Run locally with `streamlit run main.py`.
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## Contact
-- **Maintainer**: Brandon Yach)
+- **Maintainer**: Brandon Yach
 - **Support**: Submit issues on GitHub.
