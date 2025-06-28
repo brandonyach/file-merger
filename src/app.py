@@ -140,7 +140,7 @@ def run_app():
                 # Generate output file name
                 file1_stem = Path(file1.name).stem
                 file2_stem = Path(file2.name).stem
-                output_filename = f"{file1_stem}_{file2_stem}.{'.csv' if file1.name.endswith('.csv') else '.xlsx'}"
+                output_filename = f"{file1_stem}_{file2_stem}{'.csv' if file1.name.endswith('.csv') else '.xlsx'}"
                 
                 # Display preview
                 st.subheader("Merged Data Preview")
