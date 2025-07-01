@@ -1,109 +1,99 @@
-File Merger User Guide
-Introduction
-The File Merger Tool is a web-based application that helps you combine two data files (CSV or Excel) by matching on one or more columns or creating a Cartesian product. It’s designed for tasks like comparing lists, such as inventory records, customer data, or project assignments. You can choose exact or fuzzy matching, select columns to drop from File 2, and download the results, all without complex Excel formulas.
-Getting Started
+# File Merger Tool User Guide
 
-Access the Tool:
+## Introduction
 
-Open the web link provided by your team (e.g., https://file-merger.yourcompany.com).
-Log in with your company credentials if prompted.
+The **File Merger Tool** is a web-based application for combining two data files (CSV or Excel) using exact, fuzzy, or cross merges on one or more columns. Designed for tasks like reconciling inventory, customer records, or project assignments, it offers a user-friendly alternative to complex Excel formulas. Key features include file previews, customizable output by dropping File 2 columns, and secure, no-storage processing.
 
+## Getting Started
 
-Prepare Your Files:
+### Access the Tool
+- Open the web link provided by your team or visit the demo at: [https://file-merger-tool.streamlit.app](https://file-merger-tool.streamlit.app) (contact Brandon Yach for private access).
+- Log in with company credentials if prompted.
 
-Use CSV or Excel format (.csv or .xlsx).
-Ensure files have columns for matching (e.g., “ID”, “First Name”, “Last Name”) if not using cross merge.
-Example files are in data/sample/.
+### Prepare Your Files
+- Use CSV or Excel format (`.csv` or `.xlsx`).
+- For non-cross merges, ensure files have columns for matching (e.g., `ID`, `First Name`, `Last Name`).
+- Example files are in the `data/sample/` directory.
 
+## Using the Tool
 
+### Step 1: Upload Files
+1. **File 1**: Click “Upload File 1” to select your first file (e.g., `tasks.csv` with task IDs).
+2. **File 2**: Click “Upload File 2” to select your second file (e.g., `staff.csv` with staff details).
+3. Confirm loading via success messages (e.g., “Loaded File 1: tasks.csv (3 rows)”).
+4. **Previews**: View the first 10 rows of each file below the upload boxes.
 
-Using the Tool
-Step 1: Upload Files
+### Step 2: Configure the Merge
+1. **Choose Merge Type** (left column):
+   - **Left**: Keep all File 1 rows, adding matching File 2 data; non-matches get nulls.
+   - **Inner**: Keep only rows where File 1 and File 2 match on selected columns.
+   - **Outer**: Keep all rows from both files, with nulls for non-matches.
+   - **Right**: Keep all File 2 rows, adding matching File 1 data; non-matches get nulls.
+   - **Anti**: Keep File 1 rows with no exact match in File 2.
+   - **Fuzzy**: Match rows with similar values (e.g., `Alice` ≈ `Alice Brown`).
+   - **Fuzzy Anti**: Keep File 1 rows with no similar match in File 2.
+   - **Cross**: Combine every File 1 row with every File 2 row (Cartesian product; join columns ignored).
+   - **Default**: Left. A description appears for each type.
+2. **Select Merge Columns** (if not Cross):
+   - **File 1 Columns** (middle column): Choose one or more columns (e.g., `First Name`, `Last Name`).
+   - **File 2 Columns** (right column): Choose the same number (e.g., `Given Name`, `Surname`).
+   - Columns are paired in order (e.g., `First Name` with `Given Name`).
+   - Hidden for cross merge, as columns are not used.
+3. **Select File 2 Columns to Drop** (middle column):
+   - Choose columns to exclude from File 2 (e.g., `Employee ID`).
+   - All other non-merge columns are included by default.
+4. **Fuzzy Threshold** (for fuzzy/fuzzy anti merges):
+   - Adjust the similarity threshold (50-100, default 90).
+   - Higher values require closer matches (e.g., `Alice` ≈ `Alice Brown`).
 
-File 1: Click “Upload File 1” and select your first file (e.g., tasks with IDs).
-File 2: Click “Upload File 2” and select your second file (e.g., staff directory).
-Confirm files are loaded (e.g., “Loaded File 1: tasks.csv (3 rows)”).
-Previews: View the first 10 rows of each file below the upload boxes.
+### Step 3: Merge and Download
+1. Click **Merge Files**.
+2. **Preview**: View the first 10 rows of the merged data.
+3. **Summary**: See match counts (e.g., “Both: 2 rows”, “Left Only: 1 row”).
+   - **Both**: Matched rows or cross merge combinations.
+   - **Left Only**: File 1 rows without matches.
+   - **Right Only**: File 2 rows without matches.
+4. **Download**: Save the result as CSV or Excel, named `[File1]_[File2].extension` (e.g., `tasks_staff.csv`).
 
-Step 2: Configure the Merge
+## Example
 
-Choose Merge Type (left column):
-Left: Keep all rows from File 1, adding matching File 2 data; non-matches get nulls.
-Inner: Keep only rows where File 1 and File 2 match on selected columns.
-Outer: Keep all rows from both files, with nulls for non-matches.
-Right: Keep all rows from File 2, adding matching File 1 data; non-matches get nulls.
-Anti: Keep rows from File 1 with no exact match in File 2.
-Fuzzy: Match rows with similar values (e.g., ‘Alice’ ≈ ‘Alice Brown’).
-Fuzzy Anti: Keep rows from File 1 with no similar match in File 2.
-Cross: Combine every row from File 1 with every row from File 2 (Cartesian product; no join columns needed).
-Default: “Left”. A description appears for each type.
+**Goal**: Create all possible task-department combinations.
 
-
-Select Join Columns (if not Cross):
-File 1 Join Columns (middle column): Choose one or more columns (e.g., “First Name”, “Last Name”).
-File 2 Join Columns (right column): Choose the same number (e.g., “Given Name”, “Surname”).
-Columns are paired in order (e.g., First Name with Given Name).
-Hidden for cross merge, as join columns are ignored.
-
-
-Select File 2 Columns to Drop (middle column):
-Choose columns from File 2 to exclude from the output (e.g., drop “Employee ID”).
-All other non-join columns are included by default.
-
-
-Fuzzy Threshold (for fuzzy merges):
-Adjust the similarity threshold (50-100, default 90) for match strictness.
-
-
-
-Step 3: Merge and Download
-
-Click “Merge Files”.
-Preview: View the first 10 rows of the merged data.
-Summary: See match counts (e.g., “Both: 2 rows”, “Left Only: 1 row”).
-“Both”: Matched rows or cross combinations.
-“Left Only”: File 1 rows without matches.
-“Right Only”: File 2 rows without matches.
-
-
-Download: Save the result as CSV or Excel (matches File 1 format).
-
-Example
-Goal: Create all possible task-department combinations.
-
-File 1 (tasks.csv):task_id,project,first_name,last_name
+**File 1 (`tasks.csv`)**:
+```csv
+task_id,project,first_name,last_name
 T001,ProjectA,Alice,Brown
 T002,ProjectB,Bob,Smith
+```
 
-
-File 2 (staff.csv):employee_id,given_name,surname,dept
+**File 2 (`staff.csv`)**:
+```csv
+employee_id,given_name,surname,dept
 E001,Alice B.,Brown,IT
 E002,Bob,Smith,HR
+```
 
+**Settings**:
+- **Merge Type**: Cross
+- **File 2 Columns to Drop**: `employee_id`, `given_name`, `surname`
 
-Settings:
-Merge Type: “Cross”
-File 2 Columns to Drop: “employee_id”, “given_name”, “surname”
-
-
-Result (merged_output.csv):task_id,project,first_name,last_name,dept,_merge
+**Result (`tasks_staff.csv`)**:
+```csv
+task_id,project,first_name,last_name,dept,_merge
 T001,ProjectA,Alice,Brown,IT,Both
 T001,ProjectA,Alice,Brown,HR,Both
 T002,ProjectB,Bob,Smith,IT,Both
 T002,ProjectB,Bob,Smith,HR,Both
+```
 
+**Interpretation**: All tasks are paired with all departments.
 
-Interpretation: All tasks are paired with all departments.
+## Tips
+- **File Preparation**: Ensure consistent formats for merge columns.
+- **Cross Merge**: No merge columns needed; focus on columns to drop.
+- **Fuzzy Matching**: Adjust threshold for stricter or looser matches.
+- **Errors**: Check file formats or contact support.
+- **Practice**: Use `data/sample/` files to test.
 
-Tips
-
-File Preparation: Ensure consistent formats for join columns.
-Cross Merge: No join columns needed; focus on columns to drop.
-Fuzzy Matching: Adjust threshold for stricter or looser matches.
-Errors: Check file formats or contact support.
-Practice: Use data/sample/ files to test.
-
-Support
-
-Contact: [Your Name] at [Your Email].
-Feedback: Share suggestions with your team lead or IT.
+## Support
+- **Contact**: Brandon Yach (yachb35@gmail.com).

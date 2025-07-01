@@ -46,7 +46,7 @@ See `docs/user_guide.md` for detailed instructions.
 Run locally with `streamlit run main.py`.
 
 ### Streamlit Community Cloud 
-- Deployed at [Private Link, insert after deployment].
+- Deployed at https://file-merger-tool.streamlit.app/
 - Note: Prototype only; internal deployment recommended for production.
 
 
